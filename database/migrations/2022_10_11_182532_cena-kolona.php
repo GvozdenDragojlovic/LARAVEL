@@ -13,7 +13,9 @@ class CenaKolona extends Migration
      */
     public function up()
     {
-        
+        Schema::table('uredjaji', function (Blueprint $table) {
+            $table->boolean('cena')->after('popravljen');
+        });
     }
 
     /**

@@ -14,6 +14,16 @@ class tipovi extends Seeder
      */
     public function run()
     {
-        
+        Tip::create([
+            'tip' => 'Mobilni telefon'
+        ]);
+
+        Tip::create([
+            'tip' => 'Laptop'
+        ]);
+
+        Tip::create([
+            'tip' => 'Konzola'
+        ]);
     }
 }

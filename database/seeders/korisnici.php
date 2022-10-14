@@ -15,6 +15,16 @@ class korisnici extends Seeder
      */
     public function run()
     {
-        
+        $password = Hash::make('sifra');
+        $faker = \Faker\Factory::create();
+
+        for ($i = 0; $i < 30; $i++) {
+
+            User::create([
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'password' => $password,
+            ]);
+        }
     }
 }

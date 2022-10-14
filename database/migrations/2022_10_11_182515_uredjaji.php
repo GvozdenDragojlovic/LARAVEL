@@ -13,7 +13,12 @@ class Uredjaji extends Migration
      */
     public function up()
     {
-        
+        Schema::create('uredjaji', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('vlasnik');
+            $table->string('serviser');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class Uredjaji extends Migration
      */
     public function down()
     {
-       
+        Schema::dropIfExists('uredjaji');
     }
 }

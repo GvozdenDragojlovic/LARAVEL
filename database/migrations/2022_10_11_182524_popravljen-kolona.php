@@ -13,7 +13,9 @@ class PopravljenKolona extends Migration
      */
     public function up()
     {
-        
+        Schema::table('uredjaji', function (Blueprint $table) {
+            $table->boolean('popravljen')->after('serviser');
+        });
     }
 
     /**

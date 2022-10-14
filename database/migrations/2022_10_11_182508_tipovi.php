@@ -13,7 +13,11 @@ class Tipovi extends Migration
      */
     public function up()
     {
-        
+        Schema::create('tipovi', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('tip');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class Tipovi extends Migration
      */
     public function down()
     {
-        
+        Schema::dropIfExists('tipovi');
     }
 }

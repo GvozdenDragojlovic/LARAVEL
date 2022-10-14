@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
+        $this->call(tipovi::class);
+        $this->call(uredjaji::class);
+        $this->call(korisnici::class);
     }
 }
