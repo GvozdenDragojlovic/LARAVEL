@@ -32,7 +32,47 @@ class TipController extends HandleController
     }
 
 
-    
+    public function show($id)
+    {
+        $tip = Tip::find($id);
+        if (is_null($tip)) {
+            return $this->error('Tip sa zadatim id-em ne postoji.');
+        }
+        return $this->success(new TipResurs($tip), 'Tip sa zadatim id-em je vracen.');
+    }
 
-    
+
+    public function update(Request $request, $id)
+    {
+        $tip = Tip::find($id);
+        if (is_null($tip)) {
+            return $this->error('Tip sa zadatim id-em ne postoji.');
+        }
+
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'tip' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return $this->error($validator->errors());
+        }
+
+        $tip->tip = $input['tip'];
+        $tip->save();
+
+        return $this->success(new TipResurs($tip), 'Tip je azuriran.');
+    }
+
+    public function destroy($id)
+    {
+        $tip = Tip::find($id);
+        if (is_null($tip)) {
+            return $this->error('Tip sa zadatim id-em ne postoji.');
+        }
+
+        $tip->delete();
+        return $this->success([], 'Tip je obrisan.');
+    }
 }
